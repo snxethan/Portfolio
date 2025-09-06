@@ -81,12 +81,12 @@ const About = () => {
     })
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+    <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
       {sortedItems.map(({ name, icon: Icon, highlight, url }: any) => {
         const isClicked = clickedCard === name 
         const Card = (
           <div
-            className={`group relative flex flex-col items-center bg-[#1e1e1e] hover:bg-[#252525] p-3 sm:p-4 rounded-xl shadow-lg border border-[#333333] hover:border-red-600/50 transition-transform duration-300 ease-out hover:scale-[1.09] active:scale-95`} 
+            className={`group relative flex flex-col items-center justify-between bg-[#1e1e1e] hover:bg-[#252525] p-3 sm:p-4 rounded-xl shadow-lg border border-[#333333] hover:border-red-600/50 transition-transform duration-300 ease-out hover:scale-[1.09] active:scale-95 min-h-[100px] sm:min-h-[120px]`} 
           >
             <div // Icon container
               className={`inline-block p-1.5 sm:p-2 rounded-lg shadow-lg group-hover:scale-110 transition-transform duration-300 ${
@@ -95,8 +95,8 @@ const About = () => {
             >
               <Icon className="text-white text-lg sm:text-xl" /> 
             </div>
-            {/* Removed whitespace-nowrap to allow text to wrap */}
-            <p className="text-white mt-1.5 sm:mt-2 font-semibold text-xs sm:text-sm text-center">{name}</p> 
+            {/* Text wrapping improved and positioned to use available space */}
+            <p className="text-white mt-1.5 sm:mt-2 font-semibold text-xs sm:text-sm text-center leading-tight break-words hyphens-auto flex-grow flex items-center">{name}</p> 
             
             {(url?.endsWith(".pdf") || (url && !url.endsWith(".pdf"))) && (
               <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 text-gray-400 group-hover:text-red-400 transition-colors duration-300"> 
@@ -139,7 +139,7 @@ const About = () => {
 }
 
   const renderSkeletonGrid = (count: number) => (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+    <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
       {[...Array(count)].map((_, i) => (
         <div key={i} className="bg-[#1e1e1e] border border-[#333333] p-3 sm:p-4 rounded-xl animate-pulse flex flex-col items-center mx-auto">
           <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#333333] rounded mb-1.5 sm:mb-2" /> 
